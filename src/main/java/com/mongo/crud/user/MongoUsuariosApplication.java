@@ -1,4 +1,4 @@
-package com.mongo.crud.usuarios;
+package com.mongo.crud.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
