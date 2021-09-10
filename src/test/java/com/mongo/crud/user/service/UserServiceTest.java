@@ -92,10 +92,8 @@ class UserServiceTest {
 
 	@Test
 	void testDelete() {
-		when(userRepository.findById(userDto.getId())).thenReturn(Mono.just(user));
 		when(userRepository.deleteById(user.getId())).thenReturn(Mono.empty());
-		StepVerifier.create(userService.delete(user.getId())).expectErrorMessage(NOT_FOUND_MESSAGE + userDto.getId())
-				.verify();
+		StepVerifier.create(userService.delete(user.getId())).verifyComplete();
 	}
 
 }

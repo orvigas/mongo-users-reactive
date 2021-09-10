@@ -47,8 +47,7 @@ public class UserService {
 
 	public Mono<Void> delete(final String id) {
 		log.info("Deleting the user identified with id: {}", id);
-		return userRepository.findById(id).flatMap(user -> userRepository.deleteById(user.getId()).log())
-				.switchIfEmpty(Mono.error(new NotFoundException(NOT_FOUND_MESSAGE + id)));
+		return userRepository.deleteById(id);
 	}
 
 }
