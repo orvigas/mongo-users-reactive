@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.support.WebExchangeBindException;
+import org.springframework.web.server.MethodNotAllowedException;
 import org.springframework.web.server.ServerWebInputException;
 
 import com.mongo.crud.user.exception.ExceptionResponse;
@@ -16,6 +17,13 @@ public class UserControllerAdvice {
 	@ExceptionHandler(NotFoundException.class)
 	public final ResponseEntity<ExceptionResponse> notFoundException(final NotFoundException xcp) {
 		return ResponseEntity.notFound().build();
+	}
+	
+	@ExceptionHandler(MethodNotAllowedException.class)
+	public final ResponseEntity<ExceptionResponse> methodNotAllowedException(
+			final MethodNotAllowedException xcp) {
+		return ResponseEntity.badRequest().body(ExceptionResponse.builder().code(HttpStatus.METHOD_NOT_ALLOWED.value())
+				.status(HttpStatus.METHOD_NOT_ALLOWED).msg(xcp.getLocalizedMessage()).build());
 	}
 
 	@ExceptionHandler(WebExchangeBindException.class)
