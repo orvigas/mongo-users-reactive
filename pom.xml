@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mongo.crud.user</groupId>
-	<artifactId>mongo-users</artifactId>
+	<artifactId>mongo-users-reactive</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mongo-users</name>
+	<name>mongo-users-reactive</name>
 	<description>springboot users api app</description>
 	<properties>
 		<java.version>11</java.version>
