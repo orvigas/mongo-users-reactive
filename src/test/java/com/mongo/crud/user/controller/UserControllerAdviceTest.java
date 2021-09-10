@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.bind.support.WebExchangeBindException;
+import org.springframework.web.server.MethodNotAllowedException;
 import org.springframework.web.server.ServerWebInputException;
 
 import com.mongo.crud.user.exception.NotFoundException;
@@ -42,6 +43,12 @@ class UserControllerAdviceTest {
 	@Test
 	void testServerWebInputException() {
 		var instance = userControllerAdvice.serverWebInputException(new ServerWebInputException(ERROR_MESSAGE));
+		assertNotNull(instance);
+	}
+
+	@Test
+	void testMethodNotAllowedException() {
+		var instance = userControllerAdvice.methodNotAllowedException(new MethodNotAllowedException("POST", null));
 		assertNotNull(instance);
 	}
 }
